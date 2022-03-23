@@ -5,7 +5,7 @@ class ActividadListProvider extends ChangeNotifier{
   List<ActividadModel> datos = [];
   ActividadModel datoSeleccionado = ActividadModel(nombre: '', descripcion: '');
 
-  Future<ActividadModel> nuevoDato(String nombre, String descripcion ) async {
+  Future<ActividadModel> nuevaActividad(String nombre, String descripcion ) async {
     final nuevoDato =  ActividadModel(nombre: nombre, descripcion: descripcion);
     final id = await DBProvider.db.nuevoDato(nuevoDato);
     //asignar el ID de la base de datos al modelo

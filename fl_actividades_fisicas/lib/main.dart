@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_print
+import 'package:fl_actividades_fisicas/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_actividades_fisicas/screens/screens.dart';
+import 'package:provider/provider.dart';
 
 
 void main() async {
@@ -26,15 +28,21 @@ class _MyAppState extends State<MyApp> {
 
 
 
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Actividades Fisicas',
-        initialRoute: 'Home',
-        routes: {
-          'Home'  : ( _ ) => HomeScreen(),
-          'Ficha' : ( _ ) => ActividadScreen(),
-        },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider (create: (_) => ActividadListProvider(), )
+      ],
 
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Actividades Fisicas',
+          initialRoute: 'Home',
+          routes: {
+            'Home'  : ( _ ) => const HomeScreen(),
+            'Ficha' : ( _ ) => ActividadScreen(),
+          },
+    
+      ),
     );
   }
 }

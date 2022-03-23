@@ -19,7 +19,7 @@ class _ActividadesListTilesState extends State<ActividadesListTiles> {
     final actividadListProvider = Provider.of<ActividadListProvider>(context, listen: false);
 
     return FutureBuilder<List<ActividadModel>>(
-      //future: actividadListProvider.cargarTodos(),
+      future: actividadListProvider.cargarTodos(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
@@ -45,12 +45,12 @@ class _ActividadesListTilesState extends State<ActividadesListTiles> {
                           color: Colors.grey,
                         ),
                         onTap: () {
-                          actividadListProvider.getDatosById(snapshot.data![i].id!);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ActividadScreen()),
-                          );
+                          // actividadListProvider.getDatosById(snapshot.data![i].id!);
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (context) => ActividadScreen()),
+                          // );
                         }),
                   ));
         }

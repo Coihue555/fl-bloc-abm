@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:fl_actividades_fisicas/providers/providers.dart';
+import 'package:fl_actividades_fisicas/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -54,10 +55,9 @@ class _ActividadScreenState extends State<ActividadScreen> {
                               width: double.infinity,
                               child: Center(child: Text('Guardar'))),
                           onPressed: () {
-                            elementoSeleccionado.actualizarDatos(
-                                elementoSeleccionado.datoSeleccionado.id!,
+                            elementoSeleccionado.nuevaActividad(
                                 elementoSeleccionado.datoSeleccionado.nombre,
-                                elementoSeleccionado.datoSeleccionado.email);
+                                elementoSeleccionado.datoSeleccionado.descripcion);
                             //Anda
                             setState(() {});
                             Navigator.push(
