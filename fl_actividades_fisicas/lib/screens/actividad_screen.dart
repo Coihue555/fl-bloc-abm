@@ -60,7 +60,7 @@ class _ActividadScreenState extends State<ActividadScreen> {
                           FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))
                         ],
                         onChanged: (value) {
-                          elementoSeleccionado.datoSeleccionado.edadMin = int.parse(value);
+                          elementoSeleccionado.datoSeleccionado.edadMin =  int.parse(value) ;
                         },
                       ),
                       TextFormField(
