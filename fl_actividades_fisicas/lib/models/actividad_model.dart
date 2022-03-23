@@ -1,12 +1,12 @@
 class ActividadModel {
-  int? id;
-  String nombre;
-  String descripcion;
-  int edadMin;
-  int edadMax;
+   int? id;
+   String nombre;
+   String descripcion;
+   int edadMin;
+   int edadMax;
 
   ActividadModel({
-    this.id,
+    this.id ,
     required this.nombre,
     this.descripcion = '',
     this.edadMin = 6,

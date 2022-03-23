@@ -1,38 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:fl_actividades_fisicas/providers/db_provider.dart';
 
-
-class ActividadListProvider extends ChangeNotifier{
+class ActividadListProvider extends ChangeNotifier {
   List<ActividadModel> datos = [];
   ActividadModel datoSeleccionado = ActividadModel(nombre: '', descripcion: '');
 
-  Future<ActividadModel> nuevaActividad(String nombre, String descripcion, int edadMin, int edadMax ) async {
-    final nuevoDato =  ActividadModel(nombre: nombre, descripcion: descripcion, edadMin: edadMin, edadMax: edadMax);
+  Future<ActividadModel> nuevaActividad(
+      String nombre, String descripcion, int edadMin, int edadMax) async {
+    final nuevoDato = ActividadModel(
+        nombre: nombre,
+        descripcion: descripcion,
+        edadMin: edadMin,
+        edadMax: edadMax);
     final id = await DBProvider.db.nuevoDato(nuevoDato);
     //asignar el ID de la base de datos al modelo
     nuevoDato.id = id;
 
-    
-      this.datos.add(nuevoDato);
-      notifyListeners();
-    
+    datos.add(nuevoDato);
+    notifyListeners();
+
     return nuevoDato;
   }
 
-
-
   Future<List<ActividadModel>> cargarTodos() async {
-    final datos = await DBProvider.db.getTodos();
-    this.datos = [...datos!];
+    //final datos = await DBProvider.db.getTodos();
+    datos = await DBProvider.db.getTodos();
     notifyListeners();
     return datos;
-
-
   }
 
   cargarDatosByNombre(String nombre) async {
-    this.datoSeleccionado = await DBProvider.db.getDatosByNombre(nombre);
-    
+    datoSeleccionado = await DBProvider.db.getDatosByNombre(nombre);
+
     notifyListeners();
   }
 
@@ -42,18 +41,14 @@ class ActividadListProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  borrarDatoById( int? id) async {
+  borrarDatoById(int? id) async {
     await DBProvider.db.deleteDato(id!);
     cargarTodos();
   }
 
   Future<ActividadModel?> getDatosById(int id) async {
     datoSeleccionado = await DBProvider.db.getDatosById(id);
-    
+
     notifyListeners();
   }
-
-
-  
-
 }

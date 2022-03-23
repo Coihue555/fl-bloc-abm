@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'package:fl_actividades_fisicas/providers/providers.dart';
-import 'package:fl_actividades_fisicas/screens/screens.dart';
 
 
 
@@ -60,7 +59,7 @@ class _ActividadScreenState extends State<ActividadScreen> {
                           FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))
                         ],
                         onChanged: (value) {
-                          elementoSeleccionado.datoSeleccionado.edadMin =  int.parse(value) ;
+                          elementoSeleccionado.datoSeleccionado.edadMin =  int.tryParse(value) ?? 0;
                         },
                       ),
                       TextFormField(
@@ -73,7 +72,7 @@ class _ActividadScreenState extends State<ActividadScreen> {
                           FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))
                         ],
                         onChanged: (value) {
-                          elementoSeleccionado.datoSeleccionado.edadMax = int.parse(value);
+                          elementoSeleccionado.datoSeleccionado.edadMax = int.tryParse(value) ?? 0;
                         },
                       ),
                       ElevatedButton(
@@ -88,7 +87,6 @@ class _ActividadScreenState extends State<ActividadScreen> {
                                 elementoSeleccionado.datoSeleccionado.edadMax);
                             setState(() {});
                             Navigator.pushReplacementNamed(context, 'Home');
-                            //Navigator.push(context, MaterialPageRoute( builder: (context) => HomeScreen()), );
                             
                           }),
                     ],

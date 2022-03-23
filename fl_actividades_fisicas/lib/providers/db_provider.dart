@@ -72,7 +72,7 @@ class DBProvider {
     return res.isNotEmpty ? ActividadModel.fromJson(res.first) : ActividadModel(nombre: '', descripcion: '');
   }
 
-  Future<List<ActividadModel>?> getTodos() async {
+  Future<List<ActividadModel>> getTodos() async {
     final db = await database;
     final res = await db!.query('Actividades', orderBy: 'id DESC');
 

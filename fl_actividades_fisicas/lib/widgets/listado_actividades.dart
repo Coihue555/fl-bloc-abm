@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:fl_actividades_fisicas/screens/screens.dart';
 import 'package:fl_actividades_fisicas/providers/providers.dart';
 
 class ActividadesListTiles extends StatefulWidget {
@@ -21,7 +20,7 @@ class _ActividadesListTilesState extends State<ActividadesListTiles> {
         
         Expanded(
           child: Container(
-            margin: EdgeInsets.only(top: 20),
+            margin: const EdgeInsets.only(top: 20),
             width: double.infinity,
             child: FutureBuilder<List<ActividadModel>>(
               future: actividadListProvider.cargarTodos(),
