@@ -8,8 +8,11 @@ class HomeScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Lista de Actividades'),
+      ),
+      body: const Center(
          child: ActividadesListTiles(),
       ),
     );

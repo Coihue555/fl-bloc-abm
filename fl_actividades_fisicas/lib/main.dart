@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
-import 'package:fl_actividades_fisicas/providers/providers.dart';
 import 'package:flutter/material.dart';
-import 'package:fl_actividades_fisicas/screens/screens.dart';
 import 'package:provider/provider.dart';
+import 'package:fl_actividades_fisicas/screens/screens.dart';
+import 'package:fl_actividades_fisicas/providers/providers.dart';
 
 
 void main() async {

@@ -43,14 +43,16 @@ class DBProvider {
   Future<int> nuevoDato(ActividadModel nuevoDato) async {
     final id = nuevoDato.id;
     final nombre = nuevoDato.nombre;
-    final email = nuevoDato.descripcion;
+    final descripcion = nuevoDato.descripcion;
+    final edadMin = nuevoDato.edadMin;
+    final edadMax = nuevoDato.edadMax;
 
     //verificar la db
     final db = await database;
 
     final res = await db!.rawInsert('''
-      INSERT INTO Actividades(id, nombre, email)
-        VALUES( $id, '$nombre', '$email')
+      INSERT INTO Actividades(id, nombre, descripcion, edadMin, edadMax)
+        VALUES( $id, '$nombre', '$descripcion', '$edadMin', '$edadMax' )
       ''');
 
     return res;
@@ -96,12 +98,14 @@ class DBProvider {
     return res;
   }
 
-  Future<int> updateItem(int id, String nombre, String? email) async {
+  Future<int> updateItem(int id, String nombre, String? descripcion, int edadMin, int edadMax) async {
     final db = await database;
 
     final data = {
       'nombre': nombre,
-      'email': email,
+      'descripcion': descripcion,
+      'edadMin': edadMin,
+      'edadMax': edadMax
     };
 
     final result =

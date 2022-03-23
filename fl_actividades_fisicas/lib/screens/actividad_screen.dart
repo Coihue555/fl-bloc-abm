@@ -1,8 +1,10 @@
 // ignore_for_file: avoid_print
-import 'package:fl_actividades_fisicas/providers/providers.dart';
-import 'package:fl_actividades_fisicas/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:fl_actividades_fisicas/providers/providers.dart';
+import 'package:fl_actividades_fisicas/screens/screens.dart';
+
 
 
 class ActividadScreen extends StatefulWidget {
@@ -17,7 +19,7 @@ class _ActividadScreenState extends State<ActividadScreen> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Edicion'),
+          title: const Text('Nueva Actividad'),
         ),
         body: SingleChildScrollView(
             child: Padding(
@@ -30,24 +32,39 @@ class _ActividadScreenState extends State<ActividadScreen> {
                         decoration: const InputDecoration(
                           labelText: 'Nombre',
                         ),
-                        initialValue:
-                            elementoSeleccionado.datoSeleccionado.nombre,
+                        initialValue:'',
                         onChanged: (value) {
                           elementoSeleccionado.datoSeleccionado.nombre = value;
                         },
                       ),
                       const SizedBox(
-                        height: 30,
+                        height: 10,
                       ),
                       TextFormField(
                         decoration: const InputDecoration(
-                          labelText: 'Email',
+                          labelText: 'Descripcion',
                         ),
-                        initialValue:
-                            elementoSeleccionado.datoSeleccionado.descripcion,
-                        keyboardType: TextInputType.emailAddress,
+                        initialValue:'',
                         onChanged: (value) {
                           elementoSeleccionado.datoSeleccionado.descripcion = value;
+                        },
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Edad minima recomendada',
+                        ),
+                        initialValue:'',
+                        onChanged: (value) {
+                          elementoSeleccionado.datoSeleccionado.edadMin = int.parse(value);
+                        },
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Edad maxima recomendada',
+                        ),
+                        initialValue:'',
+                        onChanged: (value) {
+                          elementoSeleccionado.datoSeleccionado.edadMax = int.parse(value);
                         },
                       ),
                       ElevatedButton(
@@ -57,14 +74,13 @@ class _ActividadScreenState extends State<ActividadScreen> {
                           onPressed: () {
                             elementoSeleccionado.nuevaActividad(
                                 elementoSeleccionado.datoSeleccionado.nombre,
-                                elementoSeleccionado.datoSeleccionado.descripcion);
-                            //Anda
+                                elementoSeleccionado.datoSeleccionado.descripcion,
+                                elementoSeleccionado.datoSeleccionado.edadMin,
+                                elementoSeleccionado.datoSeleccionado.edadMax);
                             setState(() {});
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomeScreen()),
-                            );
+                            //Navigator.of(context).pushReplacementNamed(HomeScreen());
+                            Navigator.push(context, MaterialPageRoute( builder: (context) => HomeScreen()), );
+                            
                           }),
                     ],
                   ),

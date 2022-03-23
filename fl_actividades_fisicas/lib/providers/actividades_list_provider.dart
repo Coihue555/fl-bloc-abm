@@ -1,12 +1,13 @@
-import 'package:fl_actividades_fisicas/providers/db_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:fl_actividades_fisicas/providers/db_provider.dart';
+
 
 class ActividadListProvider extends ChangeNotifier{
   List<ActividadModel> datos = [];
   ActividadModel datoSeleccionado = ActividadModel(nombre: '', descripcion: '');
 
-  Future<ActividadModel> nuevaActividad(String nombre, String descripcion ) async {
-    final nuevoDato =  ActividadModel(nombre: nombre, descripcion: descripcion);
+  Future<ActividadModel> nuevaActividad(String nombre, String descripcion, int edadMin, int edadMax ) async {
+    final nuevoDato =  ActividadModel(nombre: nombre, descripcion: descripcion, edadMin: edadMin, edadMax: edadMax);
     final id = await DBProvider.db.nuevoDato(nuevoDato);
     //asignar el ID de la base de datos al modelo
     nuevoDato.id = id;
