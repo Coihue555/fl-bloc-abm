@@ -58,9 +58,7 @@ class _ActividadesListTilesState extends State<ActividadesListTiles> {
           elevation: 0,
           child: const Icon(Icons.add_circle_outline, size: 30,),
           onPressed: () {
-            Navigator.push(context,
-            MaterialPageRoute( builder: (context) => ActividadScreen()),
-            );
+            Navigator.pushReplacementNamed(context, 'Ficha');
           },
         )
       ],

@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'package:fl_actividades_fisicas/providers/providers.dart';
@@ -54,6 +55,10 @@ class _ActividadScreenState extends State<ActividadScreen> {
                           labelText: 'Edad minima recomendada',
                         ),
                         initialValue:'',
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))
+                        ],
                         onChanged: (value) {
                           elementoSeleccionado.datoSeleccionado.edadMin = int.parse(value);
                         },
@@ -63,6 +68,10 @@ class _ActividadScreenState extends State<ActividadScreen> {
                           labelText: 'Edad maxima recomendada',
                         ),
                         initialValue:'',
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))
+                        ],
                         onChanged: (value) {
                           elementoSeleccionado.datoSeleccionado.edadMax = int.parse(value);
                         },
@@ -78,8 +87,8 @@ class _ActividadScreenState extends State<ActividadScreen> {
                                 elementoSeleccionado.datoSeleccionado.edadMin,
                                 elementoSeleccionado.datoSeleccionado.edadMax);
                             setState(() {});
-                            //Navigator.of(context).pushReplacementNamed(HomeScreen());
-                            Navigator.push(context, MaterialPageRoute( builder: (context) => HomeScreen()), );
+                            Navigator.pushReplacementNamed(context, 'Home');
+                            //Navigator.push(context, MaterialPageRoute( builder: (context) => HomeScreen()), );
                             
                           }),
                     ],
@@ -87,3 +96,4 @@ class _ActividadScreenState extends State<ActividadScreen> {
                 ))));
   }
 }
+
