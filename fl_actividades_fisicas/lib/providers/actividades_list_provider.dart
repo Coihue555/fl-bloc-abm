@@ -37,7 +37,7 @@ class ActividadListProvider extends ChangeNotifier {
 
   borrarLista() async {
     await DBProvider.db.deleteAllActividades();
-    this.datos = [];
+    datos = [];
     notifyListeners();
   }
 
@@ -46,7 +46,7 @@ class ActividadListProvider extends ChangeNotifier {
     cargarTodos();
   }
 
-  Future<ActividadModel?> getDatosById(int id) async {
+  void getDatosById(int id) async {
     datoSeleccionado = await DBProvider.db.getDatosById(id);
 
     notifyListeners();
