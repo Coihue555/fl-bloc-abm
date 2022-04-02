@@ -23,26 +23,18 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    
-    
-
-
-
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider (create: (_) => ActividadListProvider(), )
-      ],
-
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Actividades Fisicas',
-          initialRoute: 'Home',
-          routes: {
-            'Home'  : ( _ ) => const HomeScreen(),
-            'Ficha' : ( _ ) => ActividadScreen(),
-          },
-    
-      ),
+      return ChangeNotifierProvider(
+        create: ( _ ) => ActividadListProvider(),
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Actividades Fisicas',
+            initialRoute: 'Home',
+            routes: {
+              'Home'  : ( _ ) => const HomeScreen(),
+              'Ficha' : ( _ ) => ActividadScreen(),
+            },
+          
+        ),
     );
   }
 }
