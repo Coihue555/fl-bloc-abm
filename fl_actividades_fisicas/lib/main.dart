@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fl_bloc_actividades/bloc/actividadlist_bloc.dart';
 import 'package:fl_bloc_actividades/screens/screens.dart';
-import 'package:fl_bloc_actividades/providers/providers.dart';
 
 
 void main() async {
@@ -23,8 +23,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-      return ChangeNotifierProvider(
-        create: ( _ ) => ActividadListProvider(),
+      return MultiBlocProvider(
+        providers: [BlocProvider(create: ( _ ) => ActividadlistBloc() )],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Actividades Fisicas',

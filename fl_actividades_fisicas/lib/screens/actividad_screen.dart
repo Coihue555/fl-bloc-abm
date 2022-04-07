@@ -1,9 +1,7 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-
-import 'package:fl_bloc_actividades/providers/providers.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fl_bloc_actividades/bloc/actividadlist_bloc.dart';
 
 
 
@@ -15,7 +13,7 @@ class ActividadScreen extends StatefulWidget {
 class _ActividadScreenState extends State<ActividadScreen> {
   @override
   Widget build(BuildContext context) {
-    final elementoSeleccionado = Provider.of<ActividadListProvider>(context);
+    final elementoSeleccionado = BlocProvider.of<ActividadlistBloc>(context);
 
     return Scaffold(
         appBar: AppBar(
@@ -49,32 +47,8 @@ class _ActividadScreenState extends State<ActividadScreen> {
                           elementoSeleccionado.datoSeleccionado.descripcion = value;
                         },
                       ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          labelText: 'Edad minima recomendada',
-                        ),
-                        initialValue:'',
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))
-                        ],
-                        onChanged: (value) {
-                          elementoSeleccionado.datoSeleccionado.edadMin =  int.tryParse(value) ?? 0;
-                        },
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          labelText: 'Edad maxima recomendada',
-                        ),
-                        initialValue:'',
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))
-                        ],
-                        onChanged: (value) {
-                          elementoSeleccionado.datoSeleccionado.edadMax = int.tryParse(value) ?? 0;
-                        },
-                      ),
+                      
+                      
                       ElevatedButton(
                           child: const SizedBox(
                               width: double.infinity,
@@ -82,9 +56,7 @@ class _ActividadScreenState extends State<ActividadScreen> {
                           onPressed: () {
                             elementoSeleccionado.nuevaActividad(
                                 elementoSeleccionado.datoSeleccionado.nombre,
-                                elementoSeleccionado.datoSeleccionado.descripcion,
-                                elementoSeleccionado.datoSeleccionado.edadMin,
-                                elementoSeleccionado.datoSeleccionado.edadMax);
+                                elementoSeleccionado.datoSeleccionado.descripcion);
                             setState(() {});
                             Navigator.pushReplacementNamed(context, 'Home');
                             

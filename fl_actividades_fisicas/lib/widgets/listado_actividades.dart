@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fl_bloc_actividades/bloc/actividadlist_bloc.dart';
 import 'package:fl_bloc_actividades/providers/providers.dart';
 
 class ActividadesListTiles extends StatefulWidget {
@@ -13,8 +13,8 @@ class ActividadesListTiles extends StatefulWidget {
 class _ActividadesListTilesState extends State<ActividadesListTiles> {
   @override
   Widget build(BuildContext context) {
-    final actividadListProvider =
-        Provider.of<ActividadListProvider>(context, listen: false);
+    final actividadListBloc =
+        BlocProvider.of<ActividadlistBloc>(context, listen: false);
 
     return Scaffold(
       body: Column(
@@ -25,7 +25,7 @@ class _ActividadesListTilesState extends State<ActividadesListTiles> {
               margin: const EdgeInsets.only(top: 20),
               width: double.infinity,
               child: FutureBuilder<List<ActividadModel>>(
-                future: actividadListProvider.cargarTodos(),
+                future: actividadListBloc.cargarTodos(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
@@ -36,7 +36,7 @@ class _ActividadesListTilesState extends State<ActividadesListTiles> {
                                 color: Colors.red,
                               ),
                               onDismissed: (DismissDirection direction) {
-                                Provider.of<ActividadListProvider>(context,
+                                BlocProvider.of<ActividadlistBloc>(context,
                                         listen: false)
                                     .borrarDatoById(snapshot.data![i].id);
                               },
@@ -48,10 +48,6 @@ class _ActividadesListTilesState extends State<ActividadesListTiles> {
                                   subtitle: Text(
                                     snapshot.data![i].descripcion.toString(),
                                   ),
-                                  trailing: Text('Edades:' +
-                                      snapshot.data![i].edadMin.toString() +
-                                      ' - ' +
-                                      snapshot.data![i].edadMax.toString()),
                                   onTap: () {}),
                             ));
                   }
