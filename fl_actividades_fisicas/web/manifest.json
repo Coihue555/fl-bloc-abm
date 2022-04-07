@@ -1,6 +1,6 @@
 {
-    "name": "fl_actividades_fisicas",
-    "short_name": "fl_actividades_fisicas",
+    "name": "fl_bloc_actividades",
+    "short_name": "fl_bloc_actividades",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

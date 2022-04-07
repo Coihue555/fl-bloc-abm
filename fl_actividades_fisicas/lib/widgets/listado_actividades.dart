@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:fl_actividades_fisicas/providers/providers.dart';
+import 'package:fl_bloc_actividades/providers/providers.dart';
 
 class ActividadesListTiles extends StatefulWidget {
   const ActividadesListTiles({Key? key}) : super(key: key);

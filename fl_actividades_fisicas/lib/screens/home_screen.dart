@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fl_actividades_fisicas/widgets/listado_actividades.dart';
+import 'package:fl_bloc_actividades/widgets/listado_actividades.dart';
 
 
 class HomeScreen extends StatelessWidget {

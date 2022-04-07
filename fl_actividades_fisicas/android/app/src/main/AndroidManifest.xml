@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fl_actividades_fisicas">
+    package="com.example.fl_bloc_actividades">
    <application
-        android:label="fl_actividades_fisicas"
+        android:label="fl_bloc_actividades"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

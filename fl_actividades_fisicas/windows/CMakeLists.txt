@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(fl_actividades_fisicas LANGUAGES CXX)
+project(fl_bloc_actividades LANGUAGES CXX)
 
-set(BINARY_NAME "fl_actividades_fisicas")
+set(BINARY_NAME "fl_bloc_actividades")
 
 cmake_policy(SET CMP0063 NEW)
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import 'package:fl_actividades_fisicas/providers/providers.dart';
+import 'package:fl_bloc_actividades/providers/providers.dart';
 
 
 

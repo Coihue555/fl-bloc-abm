@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fl_actividades_fisicas/providers/db_provider.dart';
+import 'package:fl_bloc_actividades/providers/db_provider.dart';
 
 class ActividadListProvider extends ChangeNotifier {
   List<ActividadModel> datos = [];

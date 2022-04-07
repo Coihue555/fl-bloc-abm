@@ -4,8 +4,8 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-export 'package:fl_actividades_fisicas/models/actividad_model.dart';
-import 'package:fl_actividades_fisicas/models/actividad_model.dart';
+export 'package:fl_bloc_actividades/models/actividad_model.dart';
+import 'package:fl_bloc_actividades/models/actividad_model.dart';
 
 class DBProvider {
   static Database? _database;
