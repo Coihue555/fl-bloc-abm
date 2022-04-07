@@ -1,13 +1,21 @@
 class ActividadModel {
-   int? id;
-   String nombre;
-   String descripcion;
+   final int? id;
+   final String? nombre;
+   final String descripcion;
 
   ActividadModel({
     this.id ,
-    required this.nombre,
+    this.nombre,
     this.descripcion = ''
   });
+
+  ActividadModel copyWith({
+    String? nombre,
+    String? descripcion,
+  }) => ActividadModel(
+      nombre: nombre ?? this.nombre,
+      descripcion: descripcion ?? this.descripcion,
+    );
 
   factory ActividadModel.fromJson(Map<String, dynamic> json) => ActividadModel(
         id: json["id"],

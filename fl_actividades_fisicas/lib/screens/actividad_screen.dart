@@ -13,7 +13,7 @@ class ActividadScreen extends StatefulWidget {
 class _ActividadScreenState extends State<ActividadScreen> {
   @override
   Widget build(BuildContext context) {
-    final elementoSeleccionado = BlocProvider.of<ActividadlistBloc>(context);
+    final actividad = BlocProvider.of<ActividadlistBloc>(context);
 
     return Scaffold(
         appBar: AppBar(
@@ -32,7 +32,7 @@ class _ActividadScreenState extends State<ActividadScreen> {
                         ),
                         initialValue:'',
                         onChanged: (value) {
-                          elementoSeleccionado.datoSeleccionado.nombre = value;
+                          actividad.add(NuevaActividadEvent(value)) = value;
                         },
                       ),
                       const SizedBox(
@@ -44,7 +44,7 @@ class _ActividadScreenState extends State<ActividadScreen> {
                         ),
                         initialValue:'',
                         onChanged: (value) {
-                          elementoSeleccionado.datoSeleccionado.descripcion = value;
+                          actividad.datoSeleccionado.descripcion = value;
                         },
                       ),
                       
@@ -54,9 +54,9 @@ class _ActividadScreenState extends State<ActividadScreen> {
                               width: double.infinity,
                               child: Center(child: Text('Guardar'))),
                           onPressed: () {
-                            elementoSeleccionado.nuevaActividad(
-                                elementoSeleccionado.datoSeleccionado.nombre,
-                                elementoSeleccionado.datoSeleccionado.descripcion);
+                            actividad.nuevaActividad(
+                                actividad.datoSeleccionado.nombre,
+                                actividad.datoSeleccionado.descripcion);
                             setState(() {});
                             Navigator.pushReplacementNamed(context, 'Home');
                             

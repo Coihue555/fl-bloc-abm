@@ -4,16 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fl_bloc_actividades/bloc/actividadlist_bloc.dart';
 import 'package:fl_bloc_actividades/screens/screens.dart';
 
-
 void main() async {
-  
   runApp(MyApp())
-
   ;}
 
 class MyApp extends StatefulWidget {
-  
-  
   
   @override
   State<MyApp> createState() => _MyAppState();
@@ -33,7 +28,6 @@ class _MyAppState extends State<MyApp> {
               'Home'  : ( _ ) => const HomeScreen(),
               'Ficha' : ( _ ) => ActividadScreen(),
             },
-          
         ),
     );
   }

@@ -10,6 +10,11 @@ class ObtenerListaEvent extends ActividadlistEvent{
 }
 
 class NuevaActividadEvent extends ActividadlistEvent{
+   final int? id;
+   final String? nombre;
+   final String descripcion;
+
+  NuevaActividadEvent(this.id, this.nombre, this.descripcion);
 
 }
 

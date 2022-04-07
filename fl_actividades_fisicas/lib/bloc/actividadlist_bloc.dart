@@ -18,6 +18,9 @@ class ActividadlistBloc extends Bloc<ActividadlistEvent, ActividadlistState> {
 
     on<NuevaActividadEvent>((event, emit) {
       
+      final actividades = [...state.user!.actividades, event.profession];
+      emit(UserSetState(state.user!.copyWith(profesiones: professions)));
+
     });
 
     on<ModificarActividadEvent>((event, emit) {

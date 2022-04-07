@@ -22,3 +22,11 @@ class ActividadlistInitial extends ActividadlistState {
   const ActividadlistInitial(): super();
 
 }
+
+class ActividadSetState extends ActividadlistState{
+  final ActividadlistState nuevaActividad;
+
+  ActividadSetState(this.nuevaActividad)
+    : super();
+
+}

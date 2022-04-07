@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fl_bloc_actividades/bloc/actividadlist_bloc.dart';
-import 'package:fl_bloc_actividades/providers/providers.dart';
 
 class ActividadesListTiles extends StatefulWidget {
   const ActividadesListTiles({Key? key}) : super(key: key);
@@ -13,8 +12,7 @@ class ActividadesListTiles extends StatefulWidget {
 class _ActividadesListTilesState extends State<ActividadesListTiles> {
   @override
   Widget build(BuildContext context) {
-    final actividadListBloc =
-        BlocProvider.of<ActividadlistBloc>(context, listen: false);
+    final actividadListBloc = BlocProvider.of<ActividadlistBloc>(context, listen: false);
 
     return Scaffold(
       body: Column(
@@ -24,12 +22,11 @@ class _ActividadesListTilesState extends State<ActividadesListTiles> {
             child: Container(
               margin: const EdgeInsets.only(top: 20),
               width: double.infinity,
-              child: FutureBuilder<List<ActividadModel>>(
-                future: actividadListBloc.cargarTodos(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
+              child: BlocBuilder<ActividadlistBloc, ActividadlistState>(
+                builder: (context, state) {
+              
                     return ListView.builder(
-                        itemCount: snapshot.data!.length,
+                        itemCount: 10,
                         itemBuilder: (_, i) => Dismissible(
                               key: UniqueKey(),
                               background: Container(
@@ -38,22 +35,24 @@ class _ActividadesListTilesState extends State<ActividadesListTiles> {
                               onDismissed: (DismissDirection direction) {
                                 BlocProvider.of<ActividadlistBloc>(context,
                                         listen: false)
-                                    .borrarDatoById(snapshot.data![i].id);
                               },
                               child: ListTile(
                                   leading: Icon(Icons.sports_baseball_outlined,
                                       color: Theme.of(context).primaryColor),
                                   title:
-                                      Text(snapshot.data![i].nombre.toString()),
-                                  subtitle: Text(
-                                    snapshot.data![i].descripcion.toString(),
+                                      Text('algo'),
+                                  subtitle: Text('algo'
                                   ),
                                   onTap: () {}),
                             ));
-                  }
+                  })
                   return const CircularProgressIndicator();
                 },
               ),
+
+
+            
+
             ),
           ),
           FloatingActionButton(
